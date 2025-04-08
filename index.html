@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emin Solak - Portfolio</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="1234.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(to right, #000000, #4a148c, #d500f9);
+            color: #fff;
+        }
+        @media (max-width: 768px) {
+    body {
+        overflow-x: hidden; 
+    }
+}
+/* Header */
+header {
+            background: linear-gradient(to right, #000000, #4a148c, #d500f9);
+            color: white;
+            padding: 20px 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hidden-header {
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            animation: slideDownFade 1s ease forwards;
+        }
+        header nav .profile-img {
+            margin-right: 350px;
+        }
+        header .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+        }
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition: color 0.3s ease;
+        }
+        header h1:hover {
+            color: #1abc9c;
+        }
+        header.hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        header nav ul li {
+            position: relative;
+        }
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        header nav ul li a:hover {
+            color: #1abc9c;
+            transform: translateY(-3px);
+        }
+        header nav ul li a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #1abc9c;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+        header nav ul li a:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .language-menu {
+            position: relative;
+            padding-bottom: 5px;
+
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            min-width: 120px;
+            border-radius: 5px;
+            padding: 5px;
+            top: 30px;
+            right: 0;
+            transition: opacity 1s ease, visibility 1s ease;
+            pointer-events: auto;
+
+
+        }
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: black;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        .dropdown a img {
+            width: 25px;
+            height: 15px;
+            margin-right: 10px;
+        }
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+        .language-menu:hover .dropdown {
+            display: block;
+        }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 440px) {
+    /* Adjusting the header layout on smaller screens */
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        align-items: center; /* Centriranje celog sadržaja */
+        box-shadow: none;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header nav {
+        width: 100%;
+        display: flex;
+        justify-content: center; /* Centriranje navigacije */
+    }
+
+    header nav .profile-img {
+        display: none; /* Skriva sliku profila u mobilnom prikazu */
+    }
+    
+    header nav ul {
+        font-size: 0.8rem;
+        padding-top: 10px;
+        display: flex; /* Omogućava stavkama da se postave u red */
+        justify-content: center; /* Centriranje stavki u listi */
+        gap: 15px; /* Razmak između stavki */
+        margin-top: 0;
+        padding-left: 0; /* Uklanja eventualni padding sa leve strane */
+    }
+
+    header nav ul li {
+        list-style-type: none; /* Uklanja oznake sa liste */
+    }
+
+    header nav ul li a {
+        font-size: 0.8rem;
+    }
+    .language-menu {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 120px;
+    border-radius: 5px;
+    padding: 5px;
+    top: 30px;
+    right: 0;
+    transition: opacity 1s ease, visibility 1s ease;
+    pointer-events: auto;
+}
+
+.dropdown a {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.dropdown a img {
+    width: 25px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.dropdown a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Desktop: show on hover */
+.language-menu:hover .dropdown {
+    display: block;
+}
+
+/* Mobile version */
+@media (max-width: 440px) {
+    .language-menu {
+        padding-bottom: 3px; /* Manji padding za mobilne uređaje */
+    }
+
+    .dropdown {
+        min-width: 100px; /* Manja širina za mobilnu verziju */
+        top: 25px; /* Manji razmak od vrha */
+        right: 10px; /* Manji razmak sa desne strane */
+        padding: 3px; /* Manje paddinga */
+    }
+
+    .dropdown a {
+        padding: 3px 8px; /* Manji razmak između stavki */
+        font-size: 0.9rem; /* Manji font */
+    }
+
+    .dropdown a img {
+        width: 20px; /* Manja slika za mobilne uređaje */
+        height: 12px; /* Manja visina slike */
+        margin-right: 8px; /* Manji razmak između slike i teksta */
+    }
+
+    /* Hide the dropdown by default in mobile view */
+    .language-menu.active .dropdown {
+        display: block;
+    }
+}
+
+}
+
+
+
+@media (max-width: 380px) {
+    /* Further adjustments for very small screens (phones) */
+    header {
+        padding: 10px 15px;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    header nav ul {
+        gap: 10px;
+    }
+
+    header nav ul li a {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+/* Section Styling */
+.section {
+    padding: 50px 10%;
+    padding-bottom: 150px;
+    text-align: center;
+}
+
+/* Container for the About section */
+.about-container {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
+    max-width: 1000px;
+    margin: 0 auto;
+    animation: slideLeftFade 1s ease forwards;
+
+    justify-content: space-between; /* Keeps space between image and text */
+}
+
+/* Image Styling */
+.about-container img {
+    width: 40%;
+  max-width: 500px;
+  aspect-ratio: 1/1; /* Održava sliku savršeno okruglom */
+  border-radius: 50%;
+  object-fit: cover;
+  
+}
+
+.about-container img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Text Styling */
+.about-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-text ul li {
+    padding: 10px 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    color: #fff; /* Slightly darker text for better readability */
+}
+
+.about-text ul li::before {
+    content: '\2022';
+    color: #0062E6;
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-right: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 440px) {
+    /* Adjust container layout for tablets */
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    /* Adjust image size on smaller screens */
+    .about-container img {
+        width: 250px;
+        height: 250px;
+    }
+
+    /* Adjust text alignment */
+    .about-text {
+        text-align: left;
+    }
+
+    .about-text ul li {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 375px) {
+    /* Further adjustments for very small screens (phones) */
+    .section {
+        padding: 40px 5%;
+    }
+
+    .about-container {
+        gap: 20px;
+    }
+
+    .about-container img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-text ul li {
+        font-size: 14px;
+    }
+}
+
+        
+        .hero {
+            background: url('hero.jpg') center/cover no-repeat;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero-content {
+            padding: 30px;
+            margin-top: 150px;
+            border-radius: 15px;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            text-align: center;
+        }
+        .portfolio-item.wide {
+    grid-column: 1 / -1; /* Zauzima punu širinu dostupne mreže */
+}
+        .portfolio-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        .btn {
+            display: inline-block;
+            background: #406ba3;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            width: 30%;
+            animation: slideDownFade 1s ease forwards;
+
+        }
+        .btn:hover {
+            background: #004bb5;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        /* Za tablete (max širina 1024px) */
+@media (max-width: 1024px) {
+    .scroll-to-top {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+}
+
+/* Za telefone (max širina 768px) */
+@media (max-width: 440px) {
+    .scroll-to-top {
+        width: 40px;
+        height:40px;
+        font-size: 20px;
+    }
+}
+
+        /* Efekat hover na strelicu */
+        .scroll-to-top:hover {
+            background-color: #0062E6;
+            transform: scale(1.1);
+        }
+
+        /* Skrivanje strelice u početku */
+        .scroll-to-top {
+            display: none;
+        }
+
+        /* Animacija strelice pri pojavi */
+        .scroll-to-top.show {
+            display: flex;
+        }
+
+        /* Dodajemo ikonu strelice */
+        .scroll-to-top i {
+    font-family: 'Material Icons', sans-serif; /* Dodaj ovu liniju */
+    font-size: 36px;
+}
+        .skills-section {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 40px;
+            background: linear-gradient(to right, #000000, #4a148c, #d500f9);
+            
+        }
+
+        .skill-card {
+            color: white;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-card i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover i {
+            transform: rotate(20deg);
+        }
+
+        .skill-card h3 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .skill-card .skill-tools {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tools i {
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .skill-tools i:hover {
+            color: #FF6F61;
+        }
+        /* Globalna podešavanja */
+
+/* Container za hobije */
+.hobbies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 0 20px;
+    margin-top: 60px;
+}
+
+/* Box za svaki hobi */
+.hobby-box {
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.hobby-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hobby-box i {
+    font-size: 2rem; /* Manja veličina ikone */
+    color: rgb(255, 255, 255); /* Postavlja boju ikona na crnu */
+    transition: color 0.3s ease; /* Efekat prelaza boje */
+    display: block;
+    margin: 0 auto; /* Centriranje ikone */
+    padding-top: 25px;
+    text-align: center; /* Osigurava da ikona bude centrirana unutar boxa */
+}
+
+/* Hover efekat za ikone - povećanje */
+.hobby-box:hover i {
+    transform: scale(1.1); /* Povećava ikonu pri hoveru */
+    color: #1abc9c; /* Nova boja pri hover-u */
+
+}
+/* Sadržaj unutar svakog boxa */
+.hobby-content {
+    padding: 20px;
+}
+
+.hobby-content h3 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.hobby-content p {
+    color: #ffffff;
+    font-size: 1rem;
+    text-align: left;
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* Hover efekti za tekst */
+.hobby-box:hover .hobby-content h3 {
+    color: #1abc9c;
+    transition: color 0.3s ease;
+}
+
+.hobby-box:hover .hobby-content p {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Dodavanje animacija za tekst */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hobby-content {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Zavisno od ekrana */
+@media (max-width: 440px) {
+    .hobbies-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hobby-box {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+    .hobby-content p {
+        font-size: 0.75rem;
+        text-align: justify;
+
+    }
+
+}
+/*sekcija projekti*/
+/* Projects Section */
+.projects-section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 60px 0; /* Smanjen padding na vrhu i dnu */
+    margin: 0; /* Uklanja margine koje mogu uzrokovati pomjeranje */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box; /* Osigurava da padding ne utiče na širinu */
+}
+
+.projects-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #ffffff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 0 0 40px 0; /* Centrirana margina */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.projects-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Smanjena maksimalna širina za bolje centriranje */
+    padding: 0 20px; /* Dodat padding za manje ekrane */
+    box-sizing: border-box;
+}
+
+/* Project Card */
+.project-card {
+    width: 100%;
+    max-width: 500px; /* Smanjena širina kartice za centriranje */
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1); /* Blaga prozirnost za kontrast */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: projectReveal 1.2s ease forwards;
+}
+
+/* Image Wrapper */
+.project-image-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-image {
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+/* Overlay */
+.project-overlay {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6); /* Tamniji overlay za čitljivost */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-title {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: #1abc9c;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.project-description {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: #ffffff;
+    margin-bottom: 20px;
+    max-width: 90%;
+    line-height: 1.5;
+}
+
+/* Button */
+.project-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #1abc9c, #4a148c);
+    color: #ffffff;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.project-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #4a148c, #1abc9c);
+}
+
+.project-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.project-btn:hover::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Animations */
+@keyframes projectReveal {
+    0% { transform: translateY(100px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Responsiveness */
+@media (max-width: 440px) {
+    .projects-section {
+        padding: 40px 0;
+    }
+
+    .projects-container {
+        padding: 0 15px;
+    }
+
+    .project-card {
+        max-width: 90%;
+    }
+
+    .project-image {
+        max-width: 20%;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+    }
+
+    .project-description {
+        font-size: 0.9rem;
+    }
+
+    .project-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 441px) and (max-width: 700px) {
+    .project-card {
+        max-width: 80%;
+    }
+
+    .project-image {
+        max-width: 20%;
+    }
+}
+
+/* Uklanjanje prelaza između sekcija */
+.section {
+    margin: 0;
+    padding-bottom: 60px; /* Smanjen padding za bolji kontinuitet */
+    width: 100%;
+    box-sizing: border-box;
+}
+/* Sekcija Kontakt */
+#contact {
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to right, #000000, #4a148c, #d500f9);
+    padding: 60px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Kontejner za kontakt */
+#contact .contact-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* Kontakt box - centriran vertikalno i horizontalno */
+#contact .contact-content {
+    border-radius: 15px;
+    padding: clamp(20px, 5vw, 40px);
+    width: 100%;
+    max-width: clamp(300px, 80%, 800px); /* Prilagođava se širini */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#contact .contact-content:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Naslov i podnaslov */
+#contact h2.contact-heading {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#contact p.contact-description {
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Kontaktne metode */
+#contact .contact-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: clamp(20px, 4vw, 40px);
+    gap: 20px;
+    width: 100%;
+}
+
+#contact .contact-link {
+    display: flex;
+    align-items: center;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#contact .contact-link:hover {
+    color: #1abc9c;
+    transform: translateY(-5px);
+}
+
+#contact .contact-link i {
+    margin-right: 12px;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    transition: transform 0.3s ease;
+}
+
+#contact .contact-link:hover i {
+    transform: scale(1.2);
+}
+
+/* Forma - centrirana unutar contact boxa */
+#contact .contact-form-element {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 2vw, 20px);
+    width: 100%;
+    max-width: 600px; /* Ograničava širinu forme */
+    margin: 0 auto; /* Centriranje */
+}
+
+/* Input grupa */
+#contact .contact-input-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Input polja i textarea */
+#contact .contact-input-field,
+#contact .contact-textarea-field {
+    width: 100%;
+    max-width: 500px; /* Ograničava širinu polja */
+    padding: clamp(10px, 2vw, 15px);
+    border: none;
+    border-radius: 5px;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-family: 'Montserrat', sans-serif;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff; /* Boja unosa */
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+/* Bijela boja za placeholder tekst */
+#contact .contact-input-field::placeholder,
+#contact .contact-textarea-field::placeholder {
+    color: #ffffff; /* Bijela boja za placeholder */
+    opacity: 0.8; /* Blaga prozirnost za razliku od unosa */
+}
+
+#contact .contact-input-field:focus,
+#contact .contact-textarea-field:focus {
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+    transform: scale(1.02);
+}
+
+#contact .contact-textarea-field {
+    resize: none;
+    height: clamp(100px, 15vh, 150px);
+}
+
+/* Dugme za slanje */
+#contact .contact-submit-btn {
+    background-color: #4a148c;
+    color: white;
+    padding: clamp(10px, 2vw, 15px) clamp(20px, 3vw, 30px);
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    width: clamp(50%, 60%, 80%);
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#contact .contact-submit-btn:hover {
+    background-color: #1abc9c;
+    transform: scale(1.05);
+}
+
+/* Dugmad za društvene mreže */
+#contact .contact-social-links {
+    display: flex;
+    justify-content: center;
+    gap: clamp(15px, 2vw, 20px);
+    margin-top: clamp(20px, 3vw, 30px);
+    width: 100%;
+}
+
+#contact .contact-social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(40px, 5vw, 50px);
+    height: clamp(40px, 5vw, 50px);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#contact .contact-social-icon:hover {
+    transform: scale(1.1);
+}
+
+#contact .contact-social-icon.instagram:hover {
+    background: #e1306c;
+}
+
+#contact .contact-social-icon.linkedin:hover {
+    background: #0077b5;
+}
+
+#contact .contact-social-icon.custom:hover {
+    background: #333;
+}
+
+#contact .contact-social-icon i {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+/* Animacije */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-fade-in { animation: fadeIn 1s ease forwards; }
+.animate-slide-left { animation: slideLeft 1s ease forwards; }
+.animate-slide-right { animation: slideRight 1s ease forwards; }
+.animate-slide-down { animation: slideDownFade 1s ease forwards; }
+.animate-slide-up { animation: slideUpFade 1s ease forwards; }
+
+/* Responzivnost */
+
+/* Mali telefoni (do 440px) */
+@media (max-width: 440px) {
+    #contact {
+        padding: 30px 10px;
+    }
+
+    #contact .contact-content {
+        padding: 20px;
+        width: 75%;
+        max-width: 100%; /* Popunjava širinu */
+    }
+
+    #contact .contact-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #contact .contact-form-element {
+        width: 100%;
+        max-width: 100%; /* Popunjava širinu contact boxa */
+    }
+
+    #contact .contact-input-field,
+    #contact .contact-textarea-field {
+        max-width: 100%; /* Jednak razmak do rubova */
+    }
+
+    #contact .contact-submit-btn {
+        width: 80%;
+    }
+
+    #contact .contact-social-links {
+        gap: 15px;
+    }
+}
+
+/* Tableti (441px - 700px) */
+@media (min-width: 441px) and (max-width: 700px) {
+    #contact {
+        padding: 40px 15px;
+    }
+
+    #contact .contact-content {
+        padding: 30px;
+        width: 85%;
+        max-width: 600px;
+    }
+
+    #contact .contact-info {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    #contact .contact-form-element {
+        width: 100%;
+        max-width: 90%; /* Centrirano s jednakim razmakom */
+    }
+
+    #contact .contact-input-field,
+    #contact .contact-textarea-field {
+        max-width: 100%;
+    }
+
+    #contact .contact-submit-btn {
+        width: 70%;
+    }
+
+    #contact .contact-social-links {
+        gap: 18px;
+    }
+}
+
+/* Laptopi (701px - 1200px) */
+@media (min-width: 701px) and (max-width: 1200px) {
+    #contact {
+        padding: 50px 20px;
+    }
+
+    #contact .contact-content {
+        padding: 35px;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    #contact .contact-info {
+        gap: 20px;
+    }
+
+    #contact .contact-form-element {
+        width: 100%;
+        max-width: 80%; /* Centrirano s jednakim razmakom */
+    }
+
+    #contact .contact-input-field,
+    #contact .contact-textarea-field {
+        max-width: 100%;
+    }
+
+    #contact .contact-submit-btn {
+        width: 60%;
+    }
+
+    #contact .contact-social-links {
+        gap: 20px;
+    }
+}
+
+/* Desktopi (1201px i više) */
+@media (min-width: 1201px) {
+    #contact {
+        padding: 60px 20px;
+    }
+
+    #contact .contact-content {
+        padding: 40px;
+        max-width: 800px;
+    }
+
+    #contact .contact-info {
+        gap: 20px;
+    }
+
+    #contact .contact-form-element {
+        width: 100%;
+        max-width: 600px; /* Centrirano s jednakim razmakom */
+    }
+
+    #contact .contact-input-field,
+    #contact .contact-textarea-field {
+        max-width: 100%;
+    }
+
+    #contact .contact-submit-btn {
+        width: 50%;
+    }
+
+    #contact .contact-social-links {
+        gap: 20px;
+    }
+}
+.cv-container-wrapper, .cv-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cv-container-wrapper {
+    height: 100vh;
+    width: 100vw;
+    background: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.cv-container {
+
+          
+
+    flex-direction: column;
+    text-align: center;
+    
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    transition: transform 0.3s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out;
+    max-width: 90%;
+    width: 358px;
+    margin: 0 auto; /* Dodano za centriranje */
+}
+
+.cv-container:hover {
+    transform: scale(1.05);
+}
+
+.download-btn {
+    background: #406ba3;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 250px;
+}
+
+.download-btn:hover {
+    background: #6A0DAD;
+}
+
+.download-btn:active {
+    transform: scale(0.95);
+}
+
+.download-animation {
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 30px;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.cv-container.downloading .download-animation {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+@media (max-width: 440px) {
+    .cv-container {
+        padding: 20px;
+        width: 90%;
+    }
+    .download-btn {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+}
+@font-face {
+    font-family: 'Modisframe';
+    src: url('sacred.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Glavni sadržaj */
+.container {
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-wrap: nowrap;
+      height: calc(100vh - 60px);
+      padding: 0 10%;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    /* Lijeva polovina sa animacijama */
+    .left {
+      flex: 1 1 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 50px;
+      max-width: 600px;
+    }
+    .left h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+    .left h2 {
+      font-size: 2rem;
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+    @media (max-width: 440px) {
+    .left h2 {
+        font-size: 1.5rem;
+    }
+}
+    /* Animirani elementi */
+    .animate-slide-down{
+      animation: slideDownFade 1s ease forwards;
+    }
+    .animate-slide-right{
+      animation: slideRightFade 1s ease forwards;
+    }
+    .animate-slide-left {
+      animation: slideLeftFade 1s ease forwards;
+    }
+    .animate-slide-up {
+     animation: slideUpFade 1s ease forwards;
+    }
+    /* Ključni frejmovski efekti */
+    @keyframes slideDownFade {
+      from {
+        opacity: 0;
+        transform: translateY(-70px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideRightFade {
+      from {
+        opacity: 0;
+        transform: translateX(-70px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes slideLeftFade {
+      from {
+        opacity: 0;
+        transform: translateX(70px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); } /* Pomjeri sliku malo gore */
+  100% { transform: translateY(0); }
+}
+
+
+.animate-slide-up {
+  animation: slideUpFade 1s ease forwards;
+  /* Ako želiš delay, dodaj animation-delay: 1s; */
+}
+
+    
+    /* Stilovi za desnu polovinu (slika) */
+    .right {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right img {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1/1; /* Održava sliku savršeno okruglom */
+  border-radius: 50%;
+  object-fit: cover;
+  animation: float 3s ease-in-out infinite; /* Animacija traje 3 sekunde i beskonačno se ponavlja */
+
+}
+
+    /* Responzivnost */
+    @media screen and (max-width: 440px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 20px;
+        margin-top: 180px;
+    
+      }
+      .left, .right {
+        flex: 1 1 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+      }
+      .left h1 {
+        font-size: 2.2rem;
+      }
+      .right img {
+        display: none;
+
+    }
+}
+    #typewriter {
+  color: #fff; /* Ovdje stavi željenu boju, npr. crvenu */
+}
+.buttons-container {
+  display: flex;
+  justify-content: left; /* Centriranje */
+  align-items: flex-start;
+  gap: 20px; /* Razmak između dugmadi */
+  flex-wrap: wrap; /* Omogućava prelamanje u mobilnom prikazu */
+  animation: slideDownFade 1s ease forwards;
+
+}
+
+.custom-btn {
+  display: inline-flex; /* Omogućava centriranje teksta */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap; /* Sprečava prelamanje teksta */
+  width: 220px; /* Fiksna širina */
+  height: 55px; /* Fiksna visina */
+  padding: 0; /* Uklanja dodatni padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.custom-btn:first-child {
+  background-color: #4a148c; /* Neon ljubičasta */
+  color: white;
+}
+
+.custom-btn:last-child {
+  background-color: #4a148c; /* Tamnoljubičasta */
+  color: white;
+}
+
+/* Efekti na hover */
+.custom-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Mobilni prikaz: dugmad idu jedno ispod drugog */
+@media (max-width: 440px) {
+  .buttons-container {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .custom-btn {
+    width: 60%;
+    font-size: 14px;
+    max-width: 300px; /* Ograničena širina */
+  }
+}
+
+
+/* Inicijalno stanje: tekst je pomaknut s desne, a slika s lijeve strane */
+
+/* Tekst (dolazi sa desne prema lijevoj) */
+#about .about-text {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+/* Slika (dolazi sa lijeve prema desnoj) */
+#about .about-container img {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+/* Kada se doda klasa 'visible' na sekciju #about, animacije se aktiviraju */
+#about.visible .about-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#about.visible .about-container img {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+html, body {
+  overflow-x: hidden;
+}
+@media (max-width: 440px) {
+    .hero {
+        height: 350px; /* Smanjenje visine hero sekcije */
+    }
+
+    .hero-content {
+        margin-top: 100px;
+        padding: 20px;
+        max-width: 90%; /* Bolja prilagodba ekranu */
+    }
+
+    .portfolio-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centriranje stavki */
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .portfolio-item {
+        width: 90%; /* Prilagodba širini ekrana */
+        max-width: 350px; /* Sprečavanje preširokih elemenata */
+        text-align: center;
+    }
+
+    .btn {
+        width: 80%; /* Dugmad prilagođena ekranu */
+        text-align: center;
+    }
+}
+#about h2{
+    font-size: 25px;
+}
+@media (max-width: 440px) {
+    #about h2{
+    font-size: 20px;
+}
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="1234.ico" alt="" height="40px" width="40px" class="profile-img">
+            <ul>
+                <li><a href="#home">Početna</a></li>
+                <li><a href="#about">O meni</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li class="language-menu">
+                    <a class="language-btn">Jezik</a>
+                    <div class="dropdown">
+                        <a href="index.html"><img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Flag_of_Bosnia_and_Herzegovina.svg" alt="Bosanski"> Bosanski</a>
+                        <a href="engleski.html"><img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English"> Engleski</a>
+                    </div>
+                </li>            
+            </ul>
+        </nav>
+    </header>
+    <br>
+    <div class="container">
+        <!-- Lijeva polovina: statičan tekst i dinamički typewriter efekt -->
+        <div class="left">
+          <h2 class="animate-slide-down">Zdravo, ja sam</h2>
+          <h1 class="animate-slide-right">Emin Solak</h1>
+          <!-- Statistički "Ja sam" + dinamički dio -->
+          <h2 class="animate-slide-down">Ja sam <span id="typewriter"></span></h2>
+          <p class="animate-slide-left">Vaša ideja, moj dizajn. Kreiram moderno, responzivno i estetski privlačno.</p>
+          <br>
+          <div class="buttons-container">
+            <a href="#portfolio" class="custom-btn">Pogledaj moj portfolio</a>
+            <a href="Emin Solak CV.pdf" download class="custom-btn">📥 Preuzmi CV <span class="download-check"></span></a>
+          </div>
+          
+        </div>
+        
+          
+        <!-- Desna polovina: velika slika -->
+        <div class="right">
+          <img class="animate-slide-up" src="1.jpg" alt="Moja Slika">
+        </div>
+      </div>
+
+<br>
+<br>
+<br>
+<br>
+    <section id="about" class="section">
+        <h2>O meni</h2>
+        <div class="about-container">
+            <img src="1.jpg" alt="Emin Solak">
+            <div class="about-text">
+                <ul>
+                    <li>Student Fakulteta za saobraćaj i komunikacije na Univerzitetu u Sarajevu.</li>
+                    <li>Trenutno na 3. godini, smjer Kompjuterske i informacijske tehnologije.</li>
+                    <li>Tražim priliku za stručnu praksu u IT oblasti.</li>
+                    <li>7 godina iskustva u web i grafičkom dizajnu.</li>
+                    <li>Radim s Adobe alatima: Photoshop, InDesign, Illustrator.</li>
+                    <li>Iskustvo u freelance projektima putem Freelancer, Upwork i Fiverr.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="material-icons">arrow_upward</i>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="skills-section">
+        <!-- Skill Card 1 -->
+        <div class="skill-card">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Web Dizajn</h3>
+            <p>Razvijam moderni i responzivni web dizajn koristeći najnovije tehnologije.</p>
+            <div class="skill-tools">
+                <i class="fab fa-html5"></i>
+                <i class="fab fa-css3-alt"></i>
+                <i class="fab fa-js-square"></i>
+            </div>
+        </div>
+    
+        <!-- Skill Card 2 -->
+        <div class="skill-card">
+            <i class="fas fa-paint-brush"></i>
+            <h3>Grafički Dizajn</h3>
+            <p>Kreiram vizualne sadržaje koji na jednostavan i privlačan način prenose poruke.</p>
+            <div class="skill-tools">
+                 <i class="fas fa-image"></i>
+                <i class="fas fa-palette"></i>
+            </div>
+        </div>
+    
+        <!-- Skill Card 3 -->
+        <div class="skill-card">
+            <i class="fas fa-video"></i>
+            <h3>Obrada Videа</h3>
+            <p>Montaža i editovanje video sadržaja za različite platforme.</p>
+            <div class="skill-tools">
+            </div>
+        </div>
+    
+        <!-- Skill Card 4 -->
+        <div class="skill-card">
+            <i class="fas fa-microphone"></i>
+            <h3>Obrada Zvuka</h3>
+            <p>Priprema zvučnog materijala sa visokim standardima kvaliteta.</p>
+            <div class="skill-tools">
+            </div>
+        </div>
+    
+        <!-- Skill Card 5 -->
+        <div class="skill-card">
+            <i class="fas fa-code"></i>
+            <h3>Programiranje (Python)</h3>
+            <p>Razvijam aplikacije i rješenja koristeći Python i druge moderne alate.</p>
+            <div class="skill-tools">
+                <i class="fab fa-python"></i>
+            </div>
+        </div>
+    
+    </div>
+
+    <section id="portfolio" class="section">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="3.jpg" alt="Projekt 1" width="100%">
+                <h3>Grafički Dizajn - Promo Materijali</h3>
+            </div>
+            <div class="portfolio-item">
+                <img src="4.jpg" alt="Projekt 2" width="100%">
+                <h3>Grafički Dizajn - Promo Materijali</h3>
+            </div>
+            <div class="portfolio-item">
+                <img src="5.jpg" alt="Projekt 3" width="100%">
+                <h3>Grafički Dizajn - Promo Materijali</h3>
+            </div>
+            <div class="portfolio-item wide">
+                <a href="https://emin2024541561.github.io/moj-Centrotrans-Projekat/" target="_blank">
+                    <img src="6.png" alt="Široki Projekt" width="100%">
+                </a>
+                <h3>Kopija Centrotrans stranice (Klikni na sliku)</h3>
+            </div>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="9875.png" alt="Projekt 1" width="100%">
+                <h3>Grafički Dizajn - Promo Materijali</h3>
+            </div>
+            <div class="portfolio-item">
+                <img src="189.png" alt="Projekt 2" width="100%">
+                <h3>Grafički Dizajn - Promo Materijali</h3>
+            </div>
+            <div class="portfolio-item">
+                <img src="jaka.png" alt="Projekt 3" width="100%">
+                <h3>Grafički Dizajn - Promo Materijali</h3>
+            </div>
+            <div class="portfolio-item wide">
+                    <img src="baner1.png" alt="Široki Projekt" width="100%">
+            </div>
+            <div class="portfolio-item wide">
+                    <img src="baner11.png" alt="Široki Projekt" width="100%">
+            </div>
+            <div class="portfolio-item wide">
+                <img src="business-card-mockup-In-binder-clip (1).png" alt="Široki Projekt" width="100%">
+        </div>
+            </div>
+            
+        </div>
+
+        <section id="projects" class="section projects-section">
+            <h2 class="projects-title animate-slide-down">Moji Projekti</h2>
+            <div class="projects-container">
+                <div class="project-card animate-project-reveal">
+                    <div class="project-image-wrapper">
+                        <img src="logoologo-removebg-preview.png" alt="Agencija Eminetic" class="project-image">
+                        <div class="project-overlay">
+                            <h3 class="project-title">Eminetic</h3>
+                            <p class="project-description">Otkrijte moju novu agenciju za web dizajn, gdje se kreativnost susreće sa funkcionalnošću. Kreiram responzivne web stranice prilagođene vašoj viziji.</p>
+                            <a href="https://eminetik.com" target="_blank" class="project-btn">Istraži Eminetic Sada</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+    <section id="hobbies">
+        <h2 style="text-align: center;">Moji Hobiji i Interesi</h2>
+        <div class="hobbies-container">
+            <div class="hobby-box">
+                <i class="fas fa-desktop"></i>
+                <div class="hobby-content">
+                    <h3>Web dizajn</h3>
+                    <p>Web dizajn je moj hobi koji mi omogućava da stvaram vizuelno privlačne i funkcionalne web stranice. Zanimaju me svi aspekti dizajniranja, od postavljanja korisničkog interfejsa, boja, fontova, do optimizacije za različite uređaje i platforme. Volim istraživati nove tehnologije i alate, kao što su HTML, CSS, i JavaScript, kako bih unapredio svoje projekte i učinio ih što efikasnijim i pristupačnijim.</p>
+                </div>
+            </div>
+    
+            <div class="hobby-box">
+                <i class="fas fa-paint-brush"></i>
+                <div class="hobby-content">
+                    <h3>Grafički dizajn</h3>
+                    <p>Grafički dizajn je oblast koja me inspiriše i omogućava mi da stvaram vizuelne sadržaje koji komuniciraju sa publikom. Kroz alate kao što su Adobe Photoshop, Illustrator i InDesign, mogu da dizajniram različite vrste materijala, uključujući logo-e, brošure, plakate, i digitalne projekte. Volim da eksperimentišem sa bojama, fontovima i rasporedom, uvijek se trudeći da dizajn bude estetski privlačan i funkcionalan.</p>
+                </div>
+            </div>
+    
+            <div class="hobby-box">
+                <i class="fas fa-code"></i>
+                <div class="hobby-content">
+                    <h3>Programiranje</h3>
+                    <p>Volim programirati jer me izaziva da razmišljam logički i riješavam probleme. Iako se najviše bavim Pythonom, uživam u programiranju i u drugim jezicima i tehnologijama. Svaki projekt je prilika da naučim nešto novo, bilo da se radi o razvoju web aplikacija, automatizaciji zadataka ili analizi podataka.</p>
+                </div>
+            </div>
+    
+            <div class="hobby-box">
+                <i class="fas fa-camera"></i>
+                <div class="hobby-content">
+                    <h3>Fotografisanje</h3>
+                    <p>Fotografija mi omogućava da zabilježim posebne trenutke i emocije kroz objektiv. Volim istraživati različite tehnike i stilove, bilo da se radi o portretima, pejzažima, urbanim scenama ili makro fotografiji. Fotografija mi pomaže da vježbam oko za detalje, kompoziciju i svjetlost.</p>
+                </div>
+            </div>
+    </section>
+    
+
+    <section id="contact" class="section">
+        <div class="contact-wrapper">
+            <div class="contact-content">
+                <h2 class="contact-heading animate-slide-down">Kontaktiraj me</h2>
+                <p class="contact-description animate-slide-up">Povežimo se! Pošalji mi poruku ili me kontaktiraj direktno.</p>
+                
+                <!-- Kontaktne informacije -->
+                <div class="contact-info animate-fade-in">
+                    <a href="mailto:emin@eminetik.com" class="contact-link animate-slide-left">
+                        <i class="fas fa-envelope"></i>
+                        <span>emin@eminetik.com</span>
+                    </a>
+                    <a href="tel:+387603219140" class="contact-link animate-slide-right">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+387603219140</span>
+                    </a>
+                </div>
+    
+                <!-- Forma za unos podataka -->
+                <form class="contact-form-element animate-slide-up" action="https://formspree.io/f/xrbpokqk" method="POST">
+                    <div class="contact-input-group animate-fade-in">
+                        <input type="text" name="ime" placeholder="Vaše ime" class="contact-input-field" required>
+                    </div>
+                    <div class="contact-input-group animate-fade-in" style="animation-delay: 0.2s;">
+                        <input type="email" name="email" placeholder="Vaš e-mail" class="contact-input-field" required>
+                    </div>
+                    <div class="contact-input-group animate-fade-in" style="animation-delay: 0.4s;">
+                        <textarea name="poruka" placeholder="Vaša poruka" class="contact-textarea-field" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit-btn animate-slide-up" style="animation-delay: 0.6s;">
+                        Pošalji poruku
+                    </button>
+                </form>
+                
+    
+                <!-- Prostor za društvene mreže -->
+                <div class="contact-social-links animate-fade-in" style="animation-delay: 0.8s;">
+                    <a href="https://www.instagram.com/its.emmin/" target="_blank" class="contact-social-icon instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/emin-solak/" target="_blank" class="contact-social-icon linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <!-- Dodaj još dugmadi po potrebi -->
+                    <a href="https://github.com/Emin2024541561" target="_blank" class="contact-social-icon custom">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+   
+   <script>
+
+// On scroll događaj
+window.onscroll = function() {
+    var scrollButton = document.getElementById("scrollToTop");
+    var header = document.querySelector('header');
+    var cards = document.querySelectorAll('.skill-card');
+    var headerTitle = document.getElementById("headerTitle");
+    var contactSection = document.getElementById("contact");
+
+    // Pokazivanje i skrivanje strelice
+    if (document.documentElement.scrollTop > 200) {
+        scrollButton.classList.add("show");
+    } else {
+        scrollButton.classList.remove("show");
+    }
+
+    // Dinamičko dodavanje hover efekta na skill cards
+    cards.forEach(function(card) {
+        if (card.getBoundingClientRect().top < window.innerHeight) {
+            card.style.opacity = 1;
+            card.style.transition = 'opacity 1s ease-in';
+        }
+    });
+
+    if (document.documentElement.scrollTop > 100) {
+    header.classList.add('sticky');
+    header.classList.add("hidden-header"); // Sakriva cijeli header
+} else {
+    header.classList.remove('sticky');
+    header.classList.remove("hidden-header");
+}
+
+// Dodavanje animacije za kontakt sekciju
+var distance = contactSection.getBoundingClientRect().top;
+if (distance < window.innerHeight) {
+    contactSection.classList.add("fade-in");
+}
+
+
+// Funkcija za pomeranje na vrh stranice kada se klikne na strelicu
+document.getElementById("scrollToTop").addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+// Dodavanje animacije pri učitavanju stranice
+window.addEventListener('load', function () {
+    const hobbies = document.querySelectorAll('.hobby-box');
+    hobbies.forEach((hobby, index) => {
+        setTimeout(() => {
+            hobby.classList.add('animate');
+        }, index * 200);
+    });
+});
+
+// CSS za fade-in animaciju
+document.styleSheets[0].insertRule(`
+    #contact.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 1s ease, transform 1s ease;
+    }
+`, 0);
+
+}
+
+
+ 
+        const words = ["dizajner", "web developer"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 100;
+    const pauseTime = 1000;
+
+    function typeWriter() {
+      const element = document.getElementById('typewriter');
+      const currentWord = words[wordIndex];
+      element.textContent = currentWord.substring(0, charIndex);
+
+      if (!isDeleting) {
+        if (charIndex < currentWord.length) {
+          charIndex++;
+          setTimeout(typeWriter, typingSpeed);
+        } else {
+          isDeleting = true;
+          setTimeout(typeWriter, pauseTime);
+        }
+      } else {
+        if (charIndex > 0) {
+          charIndex--;
+          setTimeout(typeWriter, typingSpeed);
+        } else {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(typeWriter, typingSpeed);
+        }
+      }
+    }
+
+    typeWriter();
+    
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+  const aboutSection = document.getElementById("about");
+  
+  const observerOptions = {
+    root: null,
+    threshold: 0.5  // Animacija se pokreće kad je 50% sekcije vidljivo
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        aboutSection.classList.add("visible");
+      } else {
+        aboutSection.classList.remove("visible");
+      }
+    });
+  }, observerOptions);
+
+  observer.observe(aboutSection);
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const languageMenu = document.querySelector('.language-menu');
+    
+    languageMenu.addEventListener('click', function () {
+        // Toggle 'active' class to show/hide dropdown
+        this.classList.toggle('active');
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const projectsSection = document.getElementById("projects");
+    
+    const observerOptions = {
+        root: null,
+        threshold: 0.3 // Pokreće se kada je 30% sekcije vidljivo
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                projectsSection.querySelector('.project-card').classList.add('animate-project-reveal');
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(projectsSection);
+});
+    </script>
+</body>
+</html>

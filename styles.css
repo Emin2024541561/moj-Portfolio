@@ -835,6 +835,9 @@ padding-left: 0 !important;
   #view-work .mobile-hud {
     transform: translateY(-4px);
   }
+  #view-info .contact-grid {
+    padding-left: 20px !important;
+  }
 
 }
   .site-header .brand {
@@ -1278,3 +1281,4 @@ padding-left: 0 !important;
     border-radius: var(--radius);
   }
 }
+

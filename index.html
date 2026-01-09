@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Emin Solak — Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- DESKTOP HEADER (kept identical behavior) -->
+  <header class="site-header">
+    <div class="header-left">
+      <a class="brand mono" href="#work">EMIN SOLAK</a>
+    </div>
+
+    <nav class="header-right mono" aria-label="Primary">
+      <button class="nav-item mono" type="button" data-nav="work" aria-current="page">
+        <span class="bracket">[</span> PROJEKTI <span class="bracket">]</span>
+      </button>
+      <button class="nav-item mono" type="button" data-nav="info">
+        <span class="bracket">[</span> O MENI <span class="bracket">]</span>
+      </button>
+      <button class="nav-item mono" type="button" data-nav="archive">
+        <span class="bracket">[</span> ARHIVA <span class="bracket">]</span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="stage">
+    <!-- WORK VIEW -->
+    <section id="view-work" class="view view--active" data-view="work" data-mode="home" aria-label="Work view">
+      <div class="work-grid">
+
+        <!-- MOBILE ONLY identity block (does not affect desktop) -->
+        <div class="mobile-identity mono" aria-label="Mobile identity block">
+          <div class="mobile-name">
+            <div>EMIN SOLAK</div>
+          </div>
+          <!-- We reuse the SAME meta blocks (microServices + microLocation) for text + transitions. -->
+        </div>
+
+        <!-- Big title (desktop hero) reused on mobile -->
+        <div class="hero">
+          <h1 class="hero-title sans" aria-label="Hero title">
+            <span id="heroLine1" class="hero-line">EMIN</span>
+            <span id="heroLine2" class="hero-line">SOLAK</span>
+          </h1>
+        </div>
+
+        <!-- Block A (desktop right meta) -->
+        <div id="microServices" class="micro micro--services mono" aria-label="Role">
+          <div>DESIGNER &</div>
+          <div>DEVELOPER</div>
+        </div>
+
+        <!-- Block B (desktop right meta) -->
+        <div id="microLocation" class="micro micro--location mono" aria-label="Location and time">
+          <div id="locationText">SARAJEVO, BIH</div>
+          <div id="liveTime" class="time">00:00:00</div>
+        </div>
+
+        <!-- Project meta (detail view only; desktop uses this) -->
+        <div id="projectMeta" class="project-meta mono" aria-hidden="true">
+          <div id="metaServices" class="meta-services"></div>
+          <div id="metaYear" class="meta-year"></div>
+        </div>
+      </div>
+
+      <!-- Bottom strip (desktop) / Mobile slider area (mobile) -->
+      <div class="thumb-strip" aria-label="Featured work strip">
+        <!-- viewport wrapper added; desktop remains identical visually -->
+        <div class="thumb-viewport">
+          <!-- ✅ IMPORTANT: Cards are now in HTML so they ALWAYS show -->
+          <div id="thumbStrip" class="thumb-strip-inner" role="list" aria-label="Featured projects">
+
+            <!-- CARD 1 -->
+            <div class="thumb" role="listitem" data-project-id="p1" tabindex="0" aria-label="Open project GAIN">
+              <img src=  "logo4.png" alt="Project thumbnail 01" loading="eager" />
+              <div class="Eminetic">[01]</div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="thumb" role="listitem" data-project-id="p2" tabindex="0" aria-label="Open project MINIMAL">
+              <img src="picture2.png" alt="Project thumbnail 02" loading="lazy" />
+              <div class="PLAFONI24BIH">[02]</div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="thumb" role="listitem" data-project-id="p3" tabindex="0" aria-label="Open project ATLAS">
+              <img src="picture3.png" alt="Project thumbnail 03" loading="lazy" />
+              <div class="Centrotrans">[03]</div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="thumb" role="listitem" data-project-id="p4" tabindex="0" aria-label="Open project SPARK TECH">
+              <img src="slika1a.jpg" alt="Project thumbnail 04" loading="lazy" />
+              <div class="FULL VISUAL BRANDING">[04]</div>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="thumb" role="listitem" data-project-id="p5" tabindex="0" aria-label="Open project VISUALS">
+              <img src="picture5.jpeg" alt="Project thumbnail 05" loading="lazy" />
+              <div class="FULL BRANDING">[05]</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Desktop CTA (kept) + Mobile indicator (added, mobile-only) -->
+        <div id="thumbCTA" class="thumb-cta mono" aria-hidden="true">
+          <span id="ctaText">VIEW PROJECT →</span>
+
+          <!-- Mobile-only: bottom indicators -->
+          <span class="mobile-hud" aria-hidden="true">
+            <span class="mobile-hud-left"><span id="mobileCount">1</span> / <span id="mobileTotal">5</span></span>
+            <span class="mobile-hud-right">FEATURED WORK (SWIPE)</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+  <!-- PROJECT DETAIL VIEW (NEW) -->
+    <section id="view-project" class="view view--project" data-view="project" aria-label="Project detail view" aria-hidden="true">
+      <div class="project-page" role="region" aria-label="Project page layout">
+        <!-- LEFT: sticky info panel -->
+        <aside class="project-left" aria-label="Project information">
+          <div class="project-left-inner">
+            <a class="project-back mono link-soft" href="#work" data-project-back aria-label="Back to work">
+              ← BACK
+            </a>
+
+            <h1 id="projectTitle" class="project-title sans">PROJECT</h1>
+
+            <div class="project-meta-stack mono" aria-label="Project metadata">
+              <div class="meta-block">
+                <div class="meta-label muted">YEAR</div>
+                <div id="projectYear" class="meta-value">—</div>
+              </div>
+
+              <div class="meta-block">
+                <div class="meta-label muted">SERVICES</div>
+                <div id="projectServices" class="meta-value meta-services-list" aria-label="Services list">
+                  <!-- JS inserts multiple lines -->
+                </div>
+              </div>
+
+              <div class="meta-block">
+                <div class="meta-label muted">LIVE SITE</div>
+                <a id="projectLiveSite" class="meta-value link-external" href="#" target="_blank" rel="noreferrer" aria-label="Open live site">
+                  <span id="projectLiveLabel">—</span> <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+
+              <div class="meta-block meta-block--carbon" aria-label="Carbon footprint (optional)">
+                <div class="meta-label muted">CARBON FOOTPRINT</div>
+                <div class="meta-value">
+                  <span id="projectCarbonScore">0.31 g/co2</span> <span class="muted">[</span><span id="projectCarbonGrade">B</span><span class="muted">]</span>
+                </div>
+                <div class="meta-small muted">
+                  CLEANER THAN <span id="projectCarbonCleaner">67%</span> OF WEB PAGES
+                </div>
+                <a id="projectCarbonSource" class="meta-small link-soft muted" href="#" target="_blank" rel="noreferrer" aria-label="Open carbon source">
+                  SOURCE: WEBSITE CARBON <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Spacer pushes description toward the bottom on desktop via CSS -->
+            <div class="project-left-spacer" aria-hidden="true"></div>
+
+            <p id="projectDescription" class="project-description sans">
+              <!-- JS injects description -->
+            </p>
+          </div>
+        </aside>
+
+        <!-- RIGHT: scrollable image column -->
+        <div class="project-right" aria-label="Project images column">
+          <div id="projectImages" class="project-images" role="list" aria-label="Project images list">
+            <!-- JS renders 5–6 images -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFO VIEW -->
+    <section id="view-info" class="view" data-view="info" aria-label="Info view">
+      <div class="info-grid">
+        <div class="info-left">
+          <h1 class="page-title sans">INFO</h1>
+
+          <div class="info-copy sans">
+            <p><strong>Ja sam Emin Solak</strong>, 22-godišnji nezavisni dizajner i web developer iz Bosne i Hercegovine, fokusiran na promišljen dizajn i preciznu digitalnu izvedbu.</p>
+            <p>Diplomirao sam na Fakultetu saobraćaja i komunikacija Univerziteta u Sarajevu, gdje sam stekao snažnu tehničku i analitičku osnovu na smjeru  Kompjuterskih i informacijskih tehnologija.</p>
+            <p>Pomažem brendovima i digitalnim proizvodima da komuniciraju jasno i profesionalno kroz dizajn sisteme, promišljenu vizuelnu direkciju i čist, pouzdan kod.</p>
+            <p>Više od 7 godina iskustva u web i grafičkom dizajnu, uz 5+ realizovanih web development projekata i 20+ uspješno završenih grafičkih dizajn projekata.</p>
+          </div>
+        </div>
+        
+
+        <div class="info-right">
+          <figure class="portrait">
+            <img src="Emin_Solak_a.jpg" alt="Portrait placeholder" />
+          </figure>
+
+          <div class="contact-grid mono">
+            <a class="contact-item" href="mailto:emin@example.com">
+              <div class="contact-label">Email</div>
+              <div class="contact-sub muted">emin@eminetik.com</div>
+            </a>
+            <a class="contact-item" href="https://www.instagram.com/its.emmin/" target="_blank" rel="noreferrer">
+              <div class="contact-label">Instagram (Private) ↗</div>
+              <div class="contact-sub muted">@its.emmin</div>
+            </a>
+            <a class="contact-item" href="https://www.instagram.com/eminettic/" target="_blank" rel="noreferrer">
+    <div class="contact-label">Instagram Eminetic Agency ↗</div>
+    <div class="contact-sub muted">@eminettic</div>
+  </a>
+            <a class="contact-item" href="https://www.linkedin.com/in/emin-solak/" target="_blank" rel="noreferrer">
+              <div class="contact-label">LinkedIn ↗</div>
+              <div class="contact-sub muted">linkedin.com/in/emin-solak</div>
+            </a>
+            <a class="contact-item" href="https://eminetik.com" target="_blank" rel="noreferrer">
+              <div class="contact-label">Eminetic official webstore ↗</div>
+              <div class="contact-sub muted">eminetik.com</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="info-footer mono">
+          <div class="muted">© <span id="yearNow">2026</span></div>
+          <a class="link-soft muted" href="#">IMPRINT &amp; DATA PRIVACY</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHIVE VIEW -->
+    <section id="view-archive" class="view" data-view="archive" aria-label="Archive view">
+      <div class="archive-overlay">
+        <div class="archive-overlay-inner">
+          <h1 class="archive-title sans">ARCHIVE</h1>
+          <div class="archive-sub mono muted">SCROLL TO DISCOVER</div>
+        </div>
+      </div>
+
+      <div id="archiveScroll" class="archive-scroll">
+        <div id="archiveList" class="archive-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -83,7 +83,7 @@ description: "Zadatak je bio izraditi potpunu repliku postojeće web stranice. K
     link: "#",
 description: "Dizajn ambalažnih naljepnica i razvoj vizuelnih sistema za više brendova u oblasti hrane, pića i dodataka prehrani. Rad obuhvata kreiranje konzistentnog identiteta, tipografsku hijerarhiju, kolor-kodiranje proizvoda i prilagođavanje dizajna različitim formatima ambalaže, uz fokus na jasnoću komunikacije, prepoznatljivost brenda i snažan nastup na polici.",
     images: [
-"slika1a.png",
+"slika1a.jpg",
     "slika1b.png",
     "slika1c.png",
     "slika1d.png",
@@ -134,8 +134,8 @@ description: "Dizajn ambalažnih naljepnica i razvoj vizuelnih sistema za više 
   "logo22.jpg",
   "baner1.png",
   "baner11.png",
-  "baner20.png",
-  "baner21.png",
+  "baner20.jpg",
+  "baner21.jpg",
   "baner7.png"
   ]
   }

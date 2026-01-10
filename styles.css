@@ -538,13 +538,15 @@ padding-left: 0 !important;
      GLOBAL MOBILE: NO SCROLL ANYWHERE (X or Y)
      One-viewport experience. Only movement = slider drag.
   ===================================================== */
-  html, body{
-    height: 100%;
-    overflow: hidden !important;
-    overscroll-behavior: none;
-    -webkit-overflow-scrolling: auto;
-    touch-action: manipulation;
-  }
+html, body{
+  height: 100%;
+  overflow: hidden !important;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: auto; /* KLJUČNO */
+}
+
+
 
   /* Keep stage + views fixed like desktop, but mobile layout inside */
   .stage{
@@ -554,11 +556,13 @@ padding-left: 0 !important;
     position: relative;
   }
   .view{
-    position: absolute;
-    inset: 0;
-    min-height: 0;
-    overflow: hidden;
-  }
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: hidden; /* default: nema scroll, pa ćemo ga paliti po view-u */
+}
+
 
   :root{ --pad:18px; }
 
@@ -735,12 +739,21 @@ padding-left: 0 !important;
      INFO + ARCHIVE on mobile: still visible but NO scroll
      (global rule: mobile must not scroll)
   ===================================================== */
-  #view-info, #view-archive{
-    overflow: hidden;
-  }
-  .archive-scroll{
-    overflow: hidden;
-  }
+  #view-archive .archive-scroll{
+  overflow: visible !important; /* ili auto, ali ti si ga već prebacio na static flow */
+}
+#view-info,
+#view-archive{
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y; /* KLJUČNO */
+}
+
+
    #view-info {
     display: block;
     height: 100vh;
@@ -793,7 +806,7 @@ padding-left: 0 !important;
 
   .site-header .nav-item {
     flex: 1;
-    font-size: 12px !important;
+    font-size: 10px !important;
     font-weight: 700 !important;   /* "podebljaj" */
     letter-spacing: 0.12em !important;
     padding: 10px 8px !important;
@@ -834,9 +847,6 @@ padding-left: 0 !important;
   /* If you already render the mobile-hud inside thumb-cta, keep it visible */
   #view-work .mobile-hud {
     transform: translateY(-4px);
-  }
-  #view-info .contact-grid {
-    padding-left: 20px !important;
   }
 
 }
@@ -1231,7 +1241,9 @@ padding-left: 0 !important;
     overscroll-behavior: contain;
     padding-bottom: calc(56px + env(safe-area-inset-bottom)); /* space for bottom nav */
   }
-
+#view-info .contact-grid {
+    padding-left: 20px !important;
+  }
   #view-project .project-page{
     height: auto;
     min-height: 100vh;
@@ -1281,4 +1293,17 @@ padding-left: 0 !important;
     border-radius: var(--radius);
   }
 }
+@media (max-width: 500px){
 
+ #view-work .hero {
+    margin-top: 50px !important;  /* increase to move title down */
+  }
+}
+@media (max-width: 350px){
+
+ .site-header .nav-item {
+        font-size: 8px !important;
+        
+    }
+
+}
